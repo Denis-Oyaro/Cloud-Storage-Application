@@ -25,7 +25,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/signup", "/css/**", "/js/**").permitAll()
+                .antMatchers("/signup", "/css/**", "/js/**", "/login").permitAll()
                 .anyRequest().authenticated();
 
         http.formLogin()
@@ -36,8 +36,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .defaultSuccessUrl("/home", true);
 
         http.logout()
-                .logoutUrl("/logout")
-                .logoutSuccessUrl("/login");
+                .logoutUrl("/logout");
     }
 
 
